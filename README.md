@@ -16,3 +16,4 @@ Merges feature branch into main branch as one commit.
 ## TODO
 - [ ] standard output redirect to log file
 - [ ] allow delete log file when no errors
+- [ ] failed merge via `git stash pop` should be handled
