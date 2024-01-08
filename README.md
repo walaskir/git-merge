@@ -17,3 +17,4 @@ Merges feature branch into main branch as one commit.
 - [ ] standard output redirect to log file
 - [ ] allow delete log file when no errors
 - [ ] failed merge via `git stash pop` should be handled
+- [ ] don't push changes to remote repository automatically
