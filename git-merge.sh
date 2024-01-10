@@ -55,7 +55,10 @@ LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B);
 echo -e "ENTER COMMIT MESSAGE:"
 read -e -i "$LAST_COMMIT_MESSAGE" COMMIT_MESSAGE
 
-echo -e "Merging...\n"
+# Last quwstion if process also merge to origin
+read -e -p "Push $MAIN_BRANCH to origin? [y/n] " -i "n" PUSH_TO_ORIGIN
+
+echo -e "\nMerging...\n"
 
 # Do actions
 git reset $LAST_COMMON_COMMIT;
@@ -64,7 +67,11 @@ git checkout $MAIN_BRANCH
 git stash pop
 git add -A
 git commit -m "$COMMIT_MESSAGE"
-git push origin
+# push to origin if selected
+if [[ $PUSH_TO_ORIGIN == "y" ]]; then
+  git push origin
+  echo -e "\nDid not merged to origin."
+fi
 git checkout $CURRENT_BRANCH
 git pull origin
 git checkout $MAIN_BRANCH
