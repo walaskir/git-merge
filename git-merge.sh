@@ -24,19 +24,19 @@ echo -e "Merge branch feature branch to '$MAIN_BRANCH' branch\n";
 CURRENT_BRANCH=$(git branch --show-current);
 if( [ "$CURRENT_BRANCH" == "$MAIN_BRANCH" ] ); then
     echo "You must be NOT on '$MAIN_BRANCH' branch";
-    exit 1;
+    exit 2;
 fi
 
 # Check if current branch is dirty
 if [[ -n $(git status -s) ]]; then
    echo "You must first commit last changes...";
-   exit 2;
+   exit 3;
 fi
 
 # Check if current branch is behind remote
 if [[ -n $(git status -sb | grep behind) ]]; then
    echo "You must first pull changes from remote...";
-   exit 3;
+   exit 4;
 fi
 
 # Check if current branch need to be pushed
